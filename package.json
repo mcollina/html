@@ -1,0 +1,23 @@
+{
+  "name": "@gurgunday/html",
+  "description": "Leverage the power of ECMAScript's Tagged Templates to escape HTML without a template engine.",
+  "version": "4.0.0",
+  "type": "module",
+  "main": "./html.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurgunday/html.git"
+  },
+  "author": "Gürgün Dayıoğlu",
+  "license": "MIT",
+  "keywords": [
+    "escape-html",
+    "tagged-template-literal",
+    "tagged-template-literals",
+    "tagged-template",
+    "template-engine"
+  ]
+}
