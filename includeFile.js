@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 
-const fileCache = {};
+const fileCache = new Map();
 
 /**
  * @returns {string}
@@ -10,7 +10,14 @@ const includeFile = function (path) {
     throw new TypeError("`path` must be a string!");
   }
 
-  return (fileCache[path] ??= readFileSync(path, "utf-8"));
+  let file = fileCache.get(path);
+
+  if (file === undefined) {
+    file = readFileSync(path, "utf-8");
+    fileCache.set(path, file);
+  }
+
+  return file;
 };
 
 export { includeFile };
