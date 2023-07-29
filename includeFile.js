@@ -13,8 +13,7 @@ const includeFile = function (path) {
   let file = fileCache.get(path);
 
   if (file === undefined) {
-    file = readFileSync(path, "utf-8");
-    fileCache.set(path, file);
+    fileCache.set(path, (file = readFileSync(path, "utf-8")));
   }
 
   return file;
