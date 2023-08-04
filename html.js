@@ -9,6 +9,8 @@ const escapeChars = {
 const escapeRegExp = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
 
 /**
+ * @param {{ raw: string[] }} literals
+ * @param  {...any} expressions
  * @returns {string}
  */
 const html = function ({ raw: literals }, ...expressions) {
