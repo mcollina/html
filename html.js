@@ -5,7 +5,6 @@ const escapeChars = {
   "<": "&lt;",
   ">": "&gt;",
 };
-
 const escapeRegExp = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
 
 /**
@@ -13,8 +12,8 @@ const escapeRegExp = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
  * @param  {...any} expressions
  * @returns {string}
  */
-const html = function ({ raw: literals }, ...expressions) {
-  return literals.reduce((acc, lit, i) => {
+const html = ({ raw: literals }, ...expressions) =>
+  literals.reduce((acc, lit, i) => {
     let str = Array.isArray(expressions[i - 1])
       ? expressions[i - 1].join("")
       : expressions[i - 1]?.toString() ?? "";
@@ -27,6 +26,5 @@ const html = function ({ raw: literals }, ...expressions) {
 
     return acc + str + lit;
   });
-};
 
 export { html };

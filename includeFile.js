@@ -6,7 +6,7 @@ const fileCache = new Map();
  * @param {string} path
  * @returns {string}
  */
-const includeFile = function (path) {
+const includeFile = (path) => {
   let file = fileCache.get(path);
 
   if (file === undefined) {
