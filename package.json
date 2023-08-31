@@ -1,7 +1,7 @@
 {
   "name": "@gurgunday/html",
   "description": "Leverage the power of ECMAScript's Tagged Templates to escape HTML without a template engine.",
-  "version": "4.2.3",
+  "version": "5.0.0",
   "type": "module",
   "main": "./html.js",
   "exports": {
