@@ -4,6 +4,10 @@
   "version": "4.2.3",
   "type": "module",
   "main": "./html.js",
+  "exports": {
+    ".": "./html.js",
+    "./*.js": "./*.js"
+  },
   "engines": {
     "node": ">=20"
   },
