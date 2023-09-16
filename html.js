@@ -22,8 +22,8 @@ const html = ({ raw: literals }, ...expressions) =>
 
     if (literals[i] && literals[i].endsWith("!")) {
       acc = acc.slice(0, -1);
-    } else {
-      str &&= str.replace(escapeRegExp, (match) => escapeChars[match]);
+    } else if (str) {
+      str = str.replace(escapeRegExp, (match) => escapeChars[match]);
     }
 
     return acc + str + lit;
