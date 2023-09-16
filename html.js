@@ -23,7 +23,7 @@ const html = ({ raw: literals }, ...expressions) =>
     if (literals[i] && literals[i].endsWith("!")) {
       acc = acc.slice(0, -1);
     } else {
-      str &&= str.replaceAll(escapeRegExp, (match) => escapeChars[match]);
+      str &&= str.replace(escapeRegExp, (match) => escapeChars[match]);
     }
 
     return acc + str + lit;
