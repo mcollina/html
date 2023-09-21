@@ -1,4 +1,4 @@
-Leverage the power of ECMAScript's [Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates) to escape HTML without a template engine.
+Replace your template engine with pure JavaScript by leveraging the power of [tagged templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates).
 
 Inspired by [html-template-tag](https://github.com/AntonioVdlC/html-template-tag).
 
@@ -10,9 +10,9 @@ npm i @gurgunday/html
 
 ## API Reference
 
-The package provides an `html` function for tagging your template literals and escaping the expressions. To render an expression as raw HTML, prefix it with `!`.
+The package provides the `html` function that can be used to tag template literals and escape their expressions. To render an expression as raw HTML, prefix it with `!`.
 
-In addition, there's an `includeFile` function that outputs the content of a given file and caches it in memory.
+Node.js users also have access to the `includeFile` function that outputs the content of a given file and caches it in memory.
 
 ## Usage
 

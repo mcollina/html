@@ -1,6 +1,6 @@
 {
   "name": "@gurgunday/html",
-  "description": "Leverage the power of ECMAScript's Tagged Templates to escape HTML without a template engine.",
+  "description": "Replace your template engine with pure JavaScript by leveraging the power of tagged templates.",
   "version": "5.5.0",
   "type": "module",
   "main": "./html.js",
