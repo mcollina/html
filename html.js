@@ -1,4 +1,4 @@
-const escapeChars = {
+const escapeCharacters = {
   '"': "&quot;",
   "'": "&apos;",
   "&": "&amp;",
@@ -6,7 +6,10 @@ const escapeChars = {
   ">": "&gt;",
 };
 
-const escapeRegExp = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
+const escapeRegExp = new RegExp(
+  `[${Object.keys(escapeCharacters).join("")}]`,
+  "gv",
+);
 
 /**
  * @param {{ raw: string[] }} literals
@@ -14,20 +17,17 @@ const escapeRegExp = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
  * @returns {string}
  */
 const html = ({ raw: literals }, ...expressions) => {
-  let length = literals.length;
-
-  switch (length) {
+  switch (literals.length) {
     case 0:
       return "";
     case 1:
       return literals[0];
   }
 
-  --length;
-
+  const lastElementIndex = literals.length - 1;
   let acc = "";
 
-  for (let i = 0; i < length; ++i) {
+  for (let i = 0; i < lastElementIndex; ++i) {
     let lit = literals[i];
     let str = Array.isArray(expressions[i])
       ? expressions[i].join("")
@@ -36,13 +36,13 @@ const html = ({ raw: literals }, ...expressions) => {
     if (lit && lit[lit.length - 1] === "!") {
       lit = lit.slice(0, -1);
     } else if (str) {
-      str = str.replace(escapeRegExp, (match) => escapeChars[match]);
+      str = str.replace(escapeRegExp, (match) => escapeCharacters[match]);
     }
 
     acc += lit += str;
   }
 
-  acc += literals[length];
+  acc += literals[lastElementIndex];
 
   return acc;
 };
