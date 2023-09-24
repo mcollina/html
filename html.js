@@ -1,4 +1,4 @@
-const escapeCharacters = {
+const escapeChars = {
   '"': "&quot;",
   "'": "&apos;",
   "&": "&amp;",
@@ -6,10 +6,9 @@ const escapeCharacters = {
   ">": "&gt;",
 };
 
-const escapeRegExp = new RegExp(
-  `[${Object.keys(escapeCharacters).join("")}]`,
-  "gv",
-);
+const escapeRE = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
+
+const escapeReplacer = (match) => escapeChars[match];
 
 const stringify = (expression) =>
   typeof expression === "string"
@@ -41,7 +40,7 @@ const html = ({ raw: literals }, ...expressions) => {
     if (lit && lit[lit.length - 1] === "!") {
       lit = lit.slice(0, -1);
     } else if (str) {
-      str = str.replace(escapeRegExp, (match) => escapeCharacters[match]);
+      str = str.replace(escapeRE, escapeReplacer);
     }
 
     acc += lit += str;
