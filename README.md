@@ -12,7 +12,7 @@ npm i @gurgunday/html
 
 The package provides the `html` function that can be used to tag template literals and escape their expressions. To render an expression as raw HTML, prefix it with `!`.
 
-Node.js users also have access to the `includeFile` function that outputs the content of a given file and caches it in memory.
+Node.js (and Deno) users also have access to the `includeFile` function (`includeFileDeno` in Deno) that reads and outputs the content of a given file and caches it for future use.
 
 ## Usage
 
@@ -42,7 +42,7 @@ console.log(rawHTML);
 // Output: <div><img src="https://example.com/hacker.png"></div>
 ```
 
-The `includeFile` function is used to output the content of a file. Again, remember that it also caches the result, so any subsequent modifications to the same file won't be reflected until the app is restarted:
+The `includeFile` function is used to output the content of a file. Again, remember that it also caches the result in memory, so any subsequent modifications to the same file won't be reflected until the app is restarted:
 
 ```js
 import { includeFile } from "@gurgunday/html/includeFile.js";

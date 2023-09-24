@@ -3,13 +3,13 @@
   "description": "Replace your template engine with pure JavaScript by leveraging the power of tagged templates.",
   "version": "5.7.0",
   "type": "module",
-  "main": "./html.js",
+  "main": "./src/html.js",
   "exports": {
-    ".": "./html.js",
-    "./*.js": "./*.js"
+    ".": "./src/html.js",
+    "./*.js": "./src/*.js"
   },
   "files": [
-    "*.js"
+    "src/*.js"
   ],
   "engines": {
     "node": ">=20"

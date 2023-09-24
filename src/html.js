@@ -8,7 +8,7 @@ const escapeChars = {
 
 const escapeRE = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
 
-const escapeReplacer = (match) => escapeChars[match];
+const escapeReplacer = (key) => escapeChars[key];
 
 const stringify = (expression) =>
   typeof expression === "string"
