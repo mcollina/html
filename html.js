@@ -6,7 +6,7 @@ const escapeDict = {
   ">": "&gt;",
 };
 
-const escapeRE = new RegExp(`[${Object.keys(escapeDict).join("")}]`, "gv");
+const escapeRegExp = new RegExp(`[${Object.keys(escapeDict).join("")}]`, "gv");
 
 const escapeReplacer = (key) => escapeDict[key];
 
@@ -40,7 +40,7 @@ const html = ({ raw: literals }, ...expressions) => {
     if (lit && lit[lit.length - 1] === "!") {
       lit = lit.slice(0, -1);
     } else if (str) {
-      str = str.replace(escapeRE, escapeReplacer);
+      str = str.replace(escapeRegExp, escapeReplacer);
     }
 
     acc += lit += str;
