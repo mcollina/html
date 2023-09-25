@@ -1,4 +1,4 @@
-const escapeChars = {
+const escapeDict = {
   '"': "&quot;",
   "'": "&apos;",
   "&": "&amp;",
@@ -6,16 +6,16 @@ const escapeChars = {
   ">": "&gt;",
 };
 
-const escapeRE = new RegExp(`[${Object.keys(escapeChars).join("")}]`, "gv");
+const escapeRE = new RegExp(`[${Object.keys(escapeDict).join("")}]`, "gv");
 
-const escapeReplacer = (key) => escapeChars[key];
+const escapeReplacer = (key) => escapeDict[key];
 
-const stringify = (expression) =>
-  typeof expression === "string"
-    ? expression
-    : Array.isArray(expression)
-    ? expression.join("")
-    : expression?.toString() ?? "";
+const stringify = (exp) =>
+  typeof exp === "string"
+    ? exp
+    : Array.isArray(exp)
+    ? exp.join("")
+    : exp?.toString() ?? "";
 
 /**
  * @param {{ raw: string[] }} literals
@@ -30,10 +30,10 @@ const html = ({ raw: literals }, ...expressions) => {
       return literals[0];
   }
 
-  const lastElementIndex = literals.length - 1;
+  const lastLitIndex = literals.length - 1;
   let acc = "";
 
-  for (let i = 0; i < lastElementIndex; ++i) {
+  for (let i = 0; i < lastLitIndex; ++i) {
     let lit = literals[i];
     let str = stringify(expressions[i]);
 
@@ -46,7 +46,7 @@ const html = ({ raw: literals }, ...expressions) => {
     acc += lit += str;
   }
 
-  acc += literals[lastElementIndex];
+  acc += literals[lastLitIndex];
 
   return acc;
 };
