@@ -25,10 +25,10 @@ const greeting = html`<h1>Hello, ${username}!</h1>`;
 console.log(greeting);
 // Output: <h1>Hello, &lt;img src=&quot;https://example.com/hacker.png&quot;&gt;</h1>
 
-const safeHTML = '<img src="https://example.com/safe.png">';
-const rawHTML = html`<div>!${safeHTML}</div>`;
+const img = '<img src="https://example.com/safe.png">';
+const container = html`<div>!${img}</div>`;
 
-console.log(rawHTML);
+console.log(container);
 // Output: <div><img src="https://example.com/safe.png"></div>
 ```
 
@@ -37,8 +37,8 @@ The `includeFile` function returns the content of a file. Again, remember that i
 ```js
 import { includeFile } from "@gurgunday/html/includeFile.js";
 
-const svgIcon = includeFile("static/logo.svg");
+const logo = includeFile("static/logo.svg");
 
-console.log(svgIcon);
+console.log(logo);
 // Output: content of "static/logo.svg"
 ```
