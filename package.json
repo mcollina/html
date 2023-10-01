@@ -1,6 +1,6 @@
 {
   "name": "@gurgunday/html",
-  "description": "Replace your template engine with pure JavaScript by leveraging the power of tagged templates.",
+  "description": "Replace your template engine with fast JavaScript by leveraging the power of tagged templates.",
   "version": "5.10.0",
   "type": "module",
   "main": "./html.js",

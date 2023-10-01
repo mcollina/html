@@ -1,4 +1,5 @@
 const utf8Decoder = new TextDecoder("utf-8");
+
 const fileCache = new Map();
 
 /**
