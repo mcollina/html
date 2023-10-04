@@ -12,7 +12,7 @@ npm i @gurgunday/html
 
 The main export of the package is the `html` function that can be used to tag template literals and escape their expressions. To bypass escaping an expression, prefix it with `!`.
 
-Node.js (and Deno) users also have access to the `includeFile` function (`includeFileDeno` in Deno) that reads and outputs the content of a file while caching it in memory for future use.
+Node.js users also have access to the `includeFile` function that reads and outputs the content of a file while caching it in memory for future use.
 
 ## Usage
 
