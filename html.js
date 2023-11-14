@@ -37,7 +37,7 @@ const html = ({ raw: literals }, ...expressions) => {
     let lit = literals[i];
     let str = stringify(expressions[i]);
 
-    if (lit && lit[lit.length - 1] === "!") {
+    if (lit && lit.charAt(lit.length - 1) === "!") {
       lit = lit.slice(0, -1);
     } else if (str) {
       str = str.replace(escapeRegExp, escapeReplacer);
