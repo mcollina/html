@@ -11,10 +11,10 @@ const escapeRegExp = new RegExp(`[${Object.keys(escapeDict).join("")}]`, "gv");
 const escapeReplacer = (key) => escapeDict[key];
 
 const stringify = (exp) =>
-  exp == null
-    ? ""
-    : typeof exp === "string"
+  typeof exp === "string"
     ? exp
+    : exp == null
+    ? ""
     : Array.isArray(exp)
     ? exp.join("")
     : `${exp}`;
