@@ -13,7 +13,7 @@ const escapeReplacer = (key) => escapeDict[key];
 const stringify = (exp) =>
   typeof exp === "string"
     ? exp
-    : exp == null
+    : exp == undefined
     ? ""
     : Array.isArray(exp)
     ? exp.join("")
