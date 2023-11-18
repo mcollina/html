@@ -31,15 +31,15 @@ const html = ({ raw: literals }, ...expressions) => {
     let str =
       typeof expressions[i] === "string"
         ? expressions[i]
-        : expressions[i] == undefined
-        ? ""
-        : Array.isArray(expressions[i])
-        ? expressions[i].join("")
-        : `${expressions[i]}`;
+        : null == expressions[i]
+          ? ""
+          : Array.isArray(expressions[i])
+            ? expressions[i].join("")
+            : `${expressions[i]}`;
 
-    if (lit.length > 0 && lit.charAt(lit.length - 1) === "!") {
+    if (lit.length !== 0 && lit.charAt(lit.length - 1) === "!") {
       lit = lit.slice(0, -1);
-    } else if (str.length > 0) {
+    } else if (str.length !== 0) {
       str = str.replace(escapeRegExp, escapeReplacer);
     }
 
