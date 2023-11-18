@@ -10,15 +10,6 @@ const escapeRegExp = new RegExp(`[${Object.keys(escapeDict).join("")}]`, "gv");
 
 const escapeReplacer = (key) => escapeDict[key];
 
-const stringify = (exp) =>
-  typeof exp === "string"
-    ? exp
-    : exp == undefined
-    ? ""
-    : Array.isArray(exp)
-    ? exp.join("")
-    : `${exp}`;
-
 /**
  * @param {{ raw: string[] }} literals
  * @param {...*} expressions
@@ -37,7 +28,14 @@ const html = ({ raw: literals }, ...expressions) => {
 
   for (let i = 0; i < lastLitIndex; ++i) {
     let lit = literals[i];
-    let str = stringify(expressions[i]);
+    let str =
+      typeof expressions[i] === "string"
+        ? expressions[i]
+        : expressions[i] == undefined
+        ? ""
+        : Array.isArray(expressions[i])
+        ? expressions[i].join("")
+        : `${expressions[i]}`;
 
     if (lit.length > 0 && lit.charAt(lit.length - 1) === "!") {
       lit = lit.slice(0, -1);

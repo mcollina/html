@@ -1,16 +1,15 @@
 {
   "name": "@gurgunday/html",
   "description": "Replace your template engine with fast JavaScript by leveraging the power of tagged templates.",
-  "version": "6.5.1",
+  "author": "Gürgün Dayıoğlu",
+  "license": "MIT",
+  "version": "6.5.2",
   "type": "module",
   "main": "./html.js",
   "exports": {
     ".": "./html.js",
     "./*.js": "./*.js"
   },
-  "files": [
-    "*.js"
-  ],
   "engines": {
     "node": ">=20"
   },
@@ -18,8 +17,9 @@
     "type": "git",
     "url": "https://github.com/gurgunday/html.git"
   },
-  "author": "Gürgün Dayıoğlu",
-  "license": "MIT",
+  "files": [
+    "*.js"
+  ],
   "keywords": [
     "escape-html",
     "tagged-template-literal",
