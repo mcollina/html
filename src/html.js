@@ -1,4 +1,4 @@
-const escapeDict = {
+const escapeDictionary = {
   '"': "&quot;",
   "'": "&apos;",
   "&": "&amp;",
@@ -6,9 +6,12 @@ const escapeDict = {
   ">": "&gt;",
 };
 
-const escapeRegExp = new RegExp(`[${Object.keys(escapeDict).join("")}]`, "gv");
+const escapeRegExp = new RegExp(
+  `[${Object.keys(escapeDictionary).join("")}]`,
+  "gv",
+);
 
-const escapeReplacer = (key) => escapeDict[key];
+const escapeReplacerFunction = (key) => escapeDictionary[key];
 
 /**
  * @param {{ raw: string[] }} literals
@@ -28,7 +31,7 @@ const html = ({ raw: literals }, ...expressions) => {
 
   for (let i = 0; i < lastLitIndex; ++i) {
     let lit = literals[i];
-    let str =
+    let exp =
       typeof expressions[i] === "string"
         ? expressions[i]
         : null == expressions[i]
@@ -37,13 +40,12 @@ const html = ({ raw: literals }, ...expressions) => {
             ? expressions[i].join("")
             : `${expressions[i]}`;
 
-    if (lit.length !== 0 && lit.charAt(lit.length - 1) === "!") {
+    if (lit.length !== 0 && lit.charAt(lit.length - 1) === "!")
       lit = lit.slice(0, -1);
-    } else if (str.length !== 0) {
-      str = str.replace(escapeRegExp, escapeReplacer);
-    }
+    else if (exp.length !== 0)
+      exp = exp.replace(escapeRegExp, escapeReplacerFunction);
 
-    acc += lit += str;
+    acc += lit += exp;
   }
 
   acc += literals[lastLitIndex];
