@@ -19,7 +19,8 @@ const escapeFunction = (key) => escapeDictionary[key];
  * @returns {string}
  */
 const html = ({ raw: literals }, ...expressions) => {
-  if (!literals.length) return "";
+  if (literals.length === 0) return "";
+
   const lastLitI = literals.length - 1;
   let acc = "";
 
@@ -28,16 +29,17 @@ const html = ({ raw: literals }, ...expressions) => {
     let exp =
       typeof expressions[i] === "string"
         ? expressions[i]
-        : null == expressions[i]
+        : expressions[i] == null
           ? ""
-          : Array.isArray(expressions[i])
+          : Array.isArray(expressions[i]) === true
             ? expressions[i].join("")
             : `${expressions[i]}`;
 
-    if (lit.length && lit.charAt(lit.length - 1) === "!")
+    if (lit.length !== 0 && lit.charAt(lit.length - 1) === "!") {
       lit = lit.slice(0, -1);
-    else if (exp.length)
+    } else if (exp.length !== 0) {
       exp = exp.replace(escapeRegExp, escapeFunction);
+    }
 
     acc += lit += exp;
   }

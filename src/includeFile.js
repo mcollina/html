@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 
+const readFileSyncOptions = { encoding: "utf8" };
+
 const fileCache = new Map();
 
 /**
@@ -10,7 +12,7 @@ const includeFile = (path) => {
   let file = fileCache.get(path);
 
   if (file === undefined) {
-    file = readFileSync(path, "utf-8");
+    file = readFileSync(path, readFileSyncOptions);
     fileCache.set(path, file);
   }
 
