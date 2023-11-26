@@ -35,7 +35,7 @@ const html = ({ raw: literals }, ...expressions) => {
             ? expressions[i].join("")
             : `${expressions[i]}`;
 
-    if (lit.length !== 0 && lit.charAt(lit.length - 1) === "!") {
+    if (lit.length !== 0 && lit.charCodeAt(lit.length - 1) === 33) {
       lit = lit.slice(0, -1);
     } else if (exp.length !== 0) {
       exp = exp.replace(escapeRegExp, escapeFunction);
