@@ -19,10 +19,12 @@ const escapeFunction = (key) => escapeDictionary[key];
  * @returns {string}
  */
 const html = ({ raw: literals }, ...expressions) => {
-  if (literals.length === 0) return "";
-
   const lastLitI = literals.length - 1;
   let acc = "";
+
+  if (lastLitI === -1) {
+    return acc;
+  }
 
   for (let i = 0; i < lastLitI; ++i) {
     let lit = literals[i];
@@ -41,7 +43,7 @@ const html = ({ raw: literals }, ...expressions) => {
       exp = exp.replace(escapeRegExp, escapeFunction);
     }
 
-    acc += lit += exp;
+    acc += lit + exp;
   }
 
   acc += literals[lastLitI];
